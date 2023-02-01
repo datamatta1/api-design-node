@@ -1,6 +1,7 @@
 // import express
 import express from "express";
 import router from "./router";
+import {protect} from "./modules/auth";
 import morgan from "morgan";
 import cors from "cors"; 
 
@@ -22,6 +23,6 @@ app.get("/", (req, res) => {
 
 // This is the router we created in router.ts file
 // The /api is mounted to the router before any of the routes are defined
-app.use("/api", router);
+app.use("/api", protect, router);
 
 export default app;
