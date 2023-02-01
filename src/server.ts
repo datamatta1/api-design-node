@@ -1,9 +1,9 @@
 // import express
 import express from "express";
 import router from "./router";
-import {protect} from "./modules/auth";
 import morgan from "morgan";
 import cors from "cors"; 
+import {protect} from "./modules/auth";
 
 // Create a new express app instance
 const app = express();
