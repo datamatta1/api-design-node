@@ -1,4 +1,14 @@
 import { Router } from 'express';
+import { validationResult } from 'express-validator';
+import { 
+    validateCreateProductRequest, 
+    validateUpdateProductRequest, 
+    validateUpdateCreateRequest, 
+    validateUpdateRequest, 
+    validateCreateUpdatePointRequest, 
+    validateUpdatedUpdatePointRequest,
+    validateRequests
+    } from "./modules/validateRequests"
 
 // This way we create a new router instance
 const router = Router();
@@ -8,10 +18,22 @@ router.get("/product", (req, res) => {
     res.send("Hello from product");
     res.status(200);
 });
-router.get("/product/:id", () => {});
-router.put("/product/:id", () => {});
-router.post("/product/", () => {});
-router.delete("/product/:id", () => {});
+router.get("/product/:id", (req, res) => {});
+router.put("/product/:id", validateRequests, (req, res) => {
+    // const errors = validationResult(req) // Validating based of what we have put in the middleware
+
+    // if(!errors.isEmpty()){
+    //     res.status(400); 
+    //     res.send({errors: errors.array()});
+    // }
+
+
+
+}); 
+router.post("/product/", validateCreateProductRequest, (req, res) => {
+    const errors = validationResult
+}); // Validate
+router.delete("/product/:id", (req, res) => {});
 
 /** Update */
 router.get("/update", () => {});
