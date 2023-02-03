@@ -4,6 +4,7 @@ import router from "./router";
 import morgan from "morgan";
 import cors from "cors"; 
 import {protect} from "./modules/auth";
+import { createNewUser, signIn } from "./handlers/user";
 
 // Create a new express app instance
 const app = express();
@@ -24,5 +25,7 @@ app.get("/", (req, res) => {
 // This is the router we created in router.ts file
 // The /api is mounted to the router before any of the routes are defined
 app.use("/api", protect, router);
+app.post("/user", createNewUser);
+app.post("/signin", signIn);
 
 export default app;
